@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl-Be">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+</head>
+<body>
+  <h1>Auto's</h1>
+
+  <label for="category">Category:</label>
+  <select id="category" name="category" required>
+      <option value="all" <%= category === 'all' && 'selected' %>>All</option>
+      <option value="sports" <%= category === 'sports' && 'selected' %>>Sports</option>
+      <option value="luxury" <%= category === 'luxury' && 'selected' %>>Luxury</option>
+      <option value="compact" <%= category === 'compact' && 'selected' %>>Compact</option>
+      <option value="suv" <%= category === 'suv' && 'selected' %>>SUV</option>
+  </select> 
+
+  <ul id="car-list">
+      <% for (const car of cars) { %>
+          <% if (category === 'all' || car.category === category) { %>
+              <li>
+                  <h2><%= car.make %> <%= car.model %></h2>
+                  <p><%= car.year %></p>
+                  <img src="<%= car.image %>" alt="<%= car.make %> <%= car.model %>">
+                  <a href="/cars/<%= car._id %>/edit">Edit</a>
+              </li>
+          <% } %>
+      <% } %>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+  <title>Overzicht</title>
+</head>
+<body>
+  
+  <%- include('partials/aside.ejs') %>
+
+  <h1>Alle auto's</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Afbeelding</th>
+                <th>Naam</th>
+                <th>Beschrijving</th>
+                <th>Jaar</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% cars.forEach(car => { %>
+                <tr>
+                    <td><img src="<%= car.imageUrl %>" alt="<%= car.name %>" style="width: 100px;"></td>
+                    <td><%= car.name %></td>
+                    <td><%= car.description %></td>
+                    <td><%= car.birthdate %> </td>
+                    <td><%= car.status %></td>             
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</body>
+</html>

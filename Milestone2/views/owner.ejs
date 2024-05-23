@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="">
+
+    <title>owner</title>
+</head>
+<body>
+    
+    <%- include('partials/aside.ejs') %>
+
+<h1>Owners van de auto</h1>
+
+<% owners.forEach(owner => { %>
+    <article class="owner">
+        <img src="<%= owner.profileImageUrl %>" alt="<%= owner.name %>" style="width: 100px;">
+        <h2><%= owner.name %></h2>
+        <p>Leeftijd: <%= owner.age %></p>
+        <p>Geverifieerd: <%= owner.isVerified ? 'Ja' : 'Nee' %></p>
+        <h3>Auto's:</h3>
+        <ul>
+            <% owner.cars.forEach(car => { %>
+                <li>
+                    <img src="<%= cars.find(c => c.name === car.name).imageUrl %>" alt="<%= car.name %>" style="width: 50px;">
+                    <%= car.name %>
+                </li>
+            <% }); %>
+        </ul>
+    </article>
+<% }); %>
+
+</body>
+</html>

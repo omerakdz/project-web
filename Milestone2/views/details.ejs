@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+    
+    <%- include('partials/aside.ejs') %>
+
+
+    <h1>Auto Details</h1>
+
+    <% if (cars) { %>
+        <section class="car-details">
+            <h2>Auto Details</h2>
+            <article>
+                <img src="<%= cars.imageUrl %>" alt="<%= cars.name %>" style="width: 200px;">
+                <p>Naam: <%= cars.name %></p>
+                <p>Beschrijving: <%= cars.description %></p>
+                <p>Jaar: <%= cars.birthdate %></p>
+                <p>Status: <%= cars.status %></p>
+            </article>
+        </section>
+
+        <% if (owner) { %>
+            <section class="owner-details">
+                <h2>Eigenaar Details</h2>
+                <article>
+                    <img src="<%= owner.profileImageUrl %>" alt="<%= owner.name %>" style="width: 200px;">
+                    <p>Naam: <%= owner.name %></p>
+                    <p>Leeftijd: <%= owner.age %></p>
+                    <p>Is Geverifieerd: <%= owner.isVerified ? 'Ja' : 'Nee' %></p>
+                </article>
+            </section>
+        <% } else { %>
+            <p>Geen eigenaar gevonden voor deze auto.</p>
+        <% } %>
+    <% } else { %>
+        <p>Geen auto gevonden met het opgegeven ID.</p>
+    <% } %>
+</body>
+
+</body>
+</html>
